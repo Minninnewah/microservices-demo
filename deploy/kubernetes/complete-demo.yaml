@@ -148,10 +148,10 @@ spec:
     spec:
       containers:
       - name: catalogue
-        image: weaveworksdemos/catalogue:0.3.5
+        image: minninnewah/catalogue:latest
         command: ["/app"]
         args:
-        - -port=80
+        - -port=8007
         resources:
           limits:
             cpu: 200m
@@ -160,7 +160,7 @@ spec:
             cpu: 100m
             memory: 100Mi
         ports:
-        - containerPort: 80
+        - containerPort: 8007
         securityContext:
           runAsNonRoot: true
           runAsUser: 10001
@@ -173,13 +173,13 @@ spec:
         livenessProbe:
           httpGet:
             path: /health
-            port: 80
+            port: 8007
           initialDelaySeconds: 300
           periodSeconds: 3
         readinessProbe:
           httpGet:
             path: /health
-            port: 80
+            port: 8007
           initialDelaySeconds: 180
           periodSeconds: 3
       nodeSelector:
@@ -198,7 +198,7 @@ spec:
   ports:
     # the port that this service should serve on
   - port: 80
-    targetPort: 80
+    targetPort: 8007
   selector:
     name: catalogue
 ---
@@ -221,7 +221,7 @@ spec:
     spec:
       containers:
       - name: catalogue-db
-        image: weaveworksdemos/catalogue-db:0.3.0
+        image: minninnewah/catalogue-db:latest
         env:
           - name: MYSQL_ROOT_PASSWORD
             value: fake_password
