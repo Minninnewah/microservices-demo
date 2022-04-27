@@ -13,4 +13,4 @@ microk8s.config > kubeconfig.yaml
 microk8s.enable istio
 
 #prometheus
-microk8s.kubectl apply -f manifests-monitoring/
+microk8s.kubectl apply -f ./deploy/kubernetes/manifests-monitoring/
