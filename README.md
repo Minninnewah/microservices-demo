@@ -24,6 +24,9 @@ chmod +x setup_port_forwarding.sh
 ./setup_port_forwarding.sh
 ```
 
+## Additional IoT adaption
+![Test](./images/specific_IoT_implementation.jpg)
+
 # Sock Shop : A Microservice Demo Application
 
 The application is the user-facing part of an online shop that sells socks. It is intended to aid the demonstration and testing of microservice and cloud native technologies.
