@@ -8,9 +8,9 @@
 - Add a setup file file for setting up the sock-shop and do all the work that is needed for it
 
 Setup commands
-- ```./setup_kubernetes_master.sh``` to install the microk8s, set up a cluster, enable the addons and set up prometheus
-- ```./setup_environment.sh``` to deploy delete the sock-shop environment, activate the istio injection and apply the sock-shop
-- ```./setup_port_forwarding.sh``` to do all the needed port forwardings
+- `./setup_kubernetes_master.sh` to install the microk8s, set up a cluster, enable the addons and set up prometheus
+- `./setup_environment.sh` to deploy delete the sock-shop environment, activate the istio injection and apply the sock-shop
+- `./setup_port_forwarding.sh` to do all the needed port forwardings
 
 # Sock Shop : A Microservice Demo Application
 
