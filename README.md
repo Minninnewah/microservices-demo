@@ -13,7 +13,7 @@ Install the microk8s, set up a cluster, enable the addons and set up prometheus
 chmod +x setup_kubernetes_master.sh
 ./setup_kubernetes_master.sh
 ```
-Delete the sock-shop environment, activate the istio injection and apply the sock-shop
+Delete the chaos-mesh then the sock-shop environment, activate the istio injection and apply the sock-shop and chaos-mesh again. (Takes approximately 10min)
 ```
 chmod +x setup_environment.sh
 ./setup_environment.sh
