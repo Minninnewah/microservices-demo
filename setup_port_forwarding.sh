@@ -1,0 +1,2 @@
+nohup microk8s kubectl port-forward -n chaos-testing service/chaos-dashboard  --address 10.161.2.161 2333:2333 & #Chaos dashboard
+nohup microk8s kubectl port-forward -n kube-system service/kubernetes-dashboard --address 10.161.2.161 10443:443 & #Kubernetes Dashboard
