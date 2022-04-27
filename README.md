@@ -26,6 +26,7 @@ chmod +x setup_port_forwarding.sh
 
 ## Additional IoT adaption
 ![Test](./images/specific_IoT_implementation.jpg)
+A temperature sensor is representative for an IoT device in this scenario. In a real environment this IoT device will obviously not be a kubernetes service and therefore not be part of the cluster. To request the data from the IoT device a so called IoT-handler is deployed as a service in the cluster. This service request the temperature in an fix interval and forward this to every service. In this implementation only the catalogue service from the sock-shop environment requires the temperature to adjust the list price of the socks. Additionally, another IoT handler is deployed, which should not be allowed to communicate with the IoT device (based on a MUD file). This service is used to try the RCAwhile a MUD file rule violation.
 
 # Sock Shop : A Microservice Demo Application
 
