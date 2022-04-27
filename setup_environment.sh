@@ -11,8 +11,8 @@ fi
 sudo snap alias microk8s.kubectl kubectl
 
 echo "-----Delete chaos mesh-----"
+curl -sSL https://mirrors.chaos-mesh.org/v2.1.5/install.sh | bash -s -- --template | timeout 1m kubectl delete -f -
 kubectl patch crd/stresschaos.chaos-mesh.org -p '{"metadata":{"finalizers":[]}}' --type=merge
-curl -sSL https://mirrors.chaos-mesh.org/v2.1.5/install.sh | bash -s -- --template | kubectl delete -f -
 
 echo "-----Delete sock-shop-----"
 timeout 1m microk8s.kubectl delete -f ./deploy/kubernetes/complete-demo.yaml
@@ -21,6 +21,7 @@ namespaceStatus=$(kubectl get ns sock-shop -o json | jq .status.phase -r)
 while (($namespaceStatus == "Active" || $namespaceStatus == "Terminating"))
 do
         echo -n "."
+        namespaceStatus=$(kubectl get ns sock-shop -o json | jq .status.phase -r)
 done
 
 echo "-----Deploy sock-shop-----"
