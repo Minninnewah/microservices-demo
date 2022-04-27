@@ -20,7 +20,7 @@ timeout 1m microk8s.kubectl delete -f ./deploy/kubernetes/complete-demo.yaml
 namespaceStatus=$(kubectl get ns sock-shop -o json | jq .status.phase -r)
 while (($namespaceStatus == "Active" || $namespaceStatus == "Terminating"))
 do
-        echo "."
+        echo -n "."
 done
 
 echo "-----Deploy sock-shop-----"
