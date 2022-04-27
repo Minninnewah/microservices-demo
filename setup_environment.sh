@@ -18,7 +18,7 @@ echo "-----Delete sock-shop-----"
 microk8s.kubectl delete -f ./deploy/kubernetes/complete-demo.yaml
 
 namespaceStatus=$(kubectl get ns sock-shop -o json | jq .status.phase -r)
-while [ $namespaceStatus == "Active" | $namespaceStatus == "Terminating"]
+while (($namespaceStatus == "Active" || $namespaceStatus == "Terminating"))
 do
         echo "."
 done
