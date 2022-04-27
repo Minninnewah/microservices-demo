@@ -1001,3 +1001,61 @@ spec:
     targetPort: 3001
   selector:
     name: iot-handler
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iot-handler-evil
+  labels:
+    name: iot-handler-evil
+  namespace: sock-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: iot-handler-evil
+  template:
+    metadata:
+      labels:
+        name: iot-handler-evil
+    spec:
+      containers:
+      - name: iot-handler-evil
+        image: minninnewah/iot_handler_evil:latest
+        resources:
+          limits:
+            cpu: 300m
+            memory: 500Mi
+          requests:
+            cpu: 100m
+            memory: 300Mi
+        ports:
+        - containerPort: 3001
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 10001
+          capabilities:
+            drop:
+              - all
+            add:
+              - NET_BIND_SERVICE
+      nodeSelector:
+        beta.kubernetes.io/os: linux
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: iot-handler-evil
+  annotations:
+        prometheus.io/scrape: 'true'
+  labels:
+    name: iot-handler-evil
+  namespace: sock-shop
+spec:
+  ports:
+    # the port that this service should serve on
+  - port: 3002
+    targetPort: 3001
+  selector:
+    name: iot-handler-evil
+
