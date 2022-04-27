@@ -1,5 +1,12 @@
 [![Build Status](https://travis-ci.org/microservices-demo/microservices-demo.svg?branch=master)](https://travis-ci.org/microservices-demo/microservices-demo)
 
+# Adaption to the original Repository
+- Change mongoDB version to 4 because of missing AVX support in our environment
+- Update prometeus config with a new cadvisor job
+- Add additional services from (https://github.com/Minninnewah/sock-shop_iot_services) to include some iot_activity
+- Updating the catalog service (https://github.com/Minninnewah/catalogue) to use the additional IoT-services
+- Add a deployment file for setting up the sock-shop and do all the work that is needed for it
+
 # Sock Shop : A Microservice Demo Application
 
 The application is the user-facing part of an online shop that sells socks. It is intended to aid the demonstration and testing of microservice and cloud native technologies.
